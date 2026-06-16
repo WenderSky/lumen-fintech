@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lumen — Seu dinheiro no piloto automático · Demo Devan Shell Tech</title>
+<meta name="description" content="Demo de landing page de app / fintech — desenvolvida por Devan Shell Tech." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f3f1e9;--surface:#fff;--ink:#15130c;--ink-2:#615b4d;--ink-3:#928b7a;
+    --line:#e3ded1;--emerald:#0c9d6e;--emerald-d:#0a7f5a;--lime:#c8f24a;--coral:#ff7a4d;--sky:#7cc4ff;
+    --r:26px;--r-sm:16px;
+    --disp:'Space Grotesk',system-ui,sans-serif;--sans:'Inter',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  h1,h2,h3,.disp{font-family:var(--disp);letter-spacing:-.02em}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:60;background:rgba(243,241,233,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nv{display:flex;align-items:center;gap:28px;height:74px}
+  .logo{font-family:var(--disp);font-weight:700;font-size:23px;display:flex;align-items:center;gap:9px}
+  .logo .m{width:30px;height:30px;border-radius:10px;background:var(--ink);display:grid;place-items:center}
+  .logo .m::after{content:'';width:13px;height:13px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px var(--emerald) inset}
+  .nlinks{display:flex;gap:26px;font-size:15px;font-weight:500;color:var(--ink-2);margin:0 auto 0 16px}
+  .nlinks a:hover{color:var(--ink)}
+  .nbtn{display:flex;gap:8px;align-items:center}
+  .ghost{font-size:15px;font-weight:600;padding:10px 16px}
+  .pill-btn{font-size:15px;font-weight:600;background:var(--ink);color:#fff;padding:11px 22px;border-radius:40px;transition:.2s}
+  .pill-btn:hover{background:var(--emerald)}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:center;padding:60px 0 40px}
+  .tagline{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);padding:7px 8px 7px 14px;border-radius:40px;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:26px}
+  .tagline b{background:var(--lime);color:var(--ink);padding:3px 10px;border-radius:30px;font-size:12px}
+  .hero h1{font-size:clamp(46px,6.6vw,84px);line-height:.94;font-weight:700}
+  .hero h1 .mark{position:relative;white-space:nowrap;color:var(--emerald-d)}
+  .hero h1 .mark::after{content:'';position:absolute;left:-4px;right:-4px;bottom:6px;height:30%;background:var(--lime);z-index:-1;border-radius:4px;transform:rotate(-1deg)}
+  .hero p{font-size:19px;color:var(--ink-2);max-width:440px;margin:26px 0 32px;line-height:1.55}
+  .hbtns{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .cta{font-family:var(--sans);font-size:16px;font-weight:600;padding:16px 30px;border-radius:40px;cursor:pointer;transition:.2s;border:0}
+  .cta.dark{background:var(--ink);color:#fff}.cta.dark:hover{background:var(--emerald);transform:translateY(-2px)}
+  .cta.line{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}.cta.line:hover{background:var(--ink);color:#fff}
+  .stores{display:flex;gap:18px;margin-top:24px;align-items:center;color:var(--ink-2);font-size:13px;font-weight:500}
+  .stores .av{display:flex}.stores .av i{width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);margin-left:-8px;background:var(--emerald)}
+  .stores .av i:nth-child(2){background:var(--coral)}.stores .av i:nth-child(3){background:var(--sky)}.stores .av i:nth-child(4){background:var(--lime)}
+
+  /* phone mockup */
+  .pwrap{position:relative;display:flex;justify-content:center}
+  .pwrap::before{content:'';position:absolute;width:380px;height:380px;background:var(--emerald);border-radius:50%;filter:blur(10px);opacity:.14;top:40px}
+  .pwrap .blob{position:absolute;width:120px;height:120px;background:var(--lime);border-radius:38% 62% 55% 45%/55% 45% 55% 45%;top:-10px;right:30px;z-index:0;animation:morph 8s ease-in-out infinite}
+  @keyframes morph{50%{border-radius:55% 45% 40% 60%/45% 55% 45% 55%}}
+  .phone{position:relative;z-index:2;width:300px;background:#111;border-radius:44px;padding:11px;box-shadow:0 40px 80px rgba(21,19,12,.22)}
+  .screen{background:var(--bg);border-radius:34px;overflow:hidden;height:600px;display:flex;flex-direction:column}
+  .ptop{background:var(--ink);color:#fff;padding:22px 20px 26px}
+  .ptop .hi{font-size:13px;color:#b7b1a3}.ptop .hi b{color:var(--lime)}
+  .ptop .bal{font-family:var(--disp);font-size:38px;font-weight:700;margin-top:8px}
+  .ptop .row{display:flex;gap:10px;margin-top:18px}
+  .ptop .row button{flex:1;background:rgba(255,255,255,.1);border:0;color:#fff;font-family:var(--sans);font-weight:600;font-size:12px;padding:11px;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:5px}
+  .ptop .row button b{font-size:18px}
+  .pbody{flex:1;padding:18px;overflow:hidden}
+  .pcard{background:var(--surface);border-radius:16px;padding:14px;box-shadow:0 6px 20px rgba(21,19,12,.05);margin-bottom:12px}
+  .pcard .ct{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-3);font-weight:600;margin-bottom:10px}
+  .bars{display:flex;align-items:flex-end;gap:7px;height:64px}
+  .bars i{flex:1;border-radius:5px 5px 0 0;background:var(--emerald);opacity:.85}
+  .bars i:nth-child(even){background:var(--lime)}
+  .tx{display:flex;align-items:center;gap:11px;padding:9px 0}
+  .tx .ico{width:34px;height:34px;border-radius:11px;background:var(--bg);display:grid;place-items:center;font-size:15px}
+  .tx .t{flex:1}.tx .t b{font-size:13px;display:block}.tx .t span{font-size:11px;color:var(--ink-3)}
+  .tx .v{font-family:var(--disp);font-weight:600;font-size:14px}
+  .tx .v.up{color:var(--emerald)}
+
+  /* logos */
+  .logos{display:flex;flex-wrap:wrap;gap:14px 44px;justify-content:center;align-items:center;padding:30px 0 60px;color:var(--ink-3)}
+  .logos span{font-family:var(--disp);font-size:19px;font-weight:600}
+  .logos .lbl{width:100%;text-align:center;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+
+  /* section heads */
+  .sec{padding:80px 0}
+  .eye{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.05em;color:var(--emerald-d);background:rgba(12,157,110,.1);padding:5px 14px;border-radius:30px;margin-bottom:18px}
+  .sh{max-width:620px;margin-bottom:48px}
+  .sh.ctr{margin-inline:auto;text-align:center}
+  .sh h2{font-size:clamp(32px,4.6vw,52px);line-height:1.04;font-weight:700}
+  .sh p{color:var(--ink-2);margin-top:16px;font-size:18px}
+
+  /* bento */
+  .bento{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:200px;gap:16px}
+  .bx{border-radius:var(--r);padding:26px;position:relative;overflow:hidden;border:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column}
+  .bx h3{font-size:21px;font-weight:600;margin-bottom:8px}
+  .bx p{font-size:14px;color:var(--ink-2)}
+  .bx .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin-bottom:auto;font-size:22px}
+  .bx.col2{grid-column:span 2}.bx.row2{grid-row:span 2}
+  .bx.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .bx.dark p{color:#b7b1a3}
+  .bx.emerald{background:var(--emerald);color:#fff;border-color:var(--emerald)}
+  .bx.emerald p{color:rgba(255,255,255,.85)}
+  .bx.lime{background:var(--lime);border-color:var(--lime)}
+  .bx .big{font-family:var(--disp);font-size:54px;font-weight:700;line-height:1;margin-bottom:6px}
+  .bx .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .bx .chips span{background:rgba(255,255,255,.14);font-size:12px;padding:6px 12px;border-radius:20px;font-weight:500}
+  .bx.dark .ic{background:rgba(255,255,255,.12)}
+  .bx.light .ic{background:var(--bg)}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+  .step{position:relative;padding-top:18px}
+  .step::before{counter-increment:s;content:'0' counter(s);font-family:var(--disp);font-size:64px;font-weight:700;color:var(--line);line-height:.8;display:block;margin-bottom:14px}
+  .step h3{font-size:22px;font-weight:600;margin-bottom:8px}
+  .step p{color:var(--ink-2);font-size:15px}
+  .step .ln{position:absolute;top:34px;left:90px;right:-12px;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 12px)}
+
+  /* testimonials */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column}
+  .q .stars{color:var(--coral);font-size:15px;margin-bottom:14px}
+  .q p{font-size:16px;line-height:1.5;margin-bottom:20px}
+  .q .who{display:flex;align-items:center;gap:12px;margin-top:auto}
+  .q .who img{width:42px;height:42px;border-radius:50%;object-fit:cover}
+  .q .who b{font-size:14px;display:block}.q .who span{font-size:13px;color:var(--ink-3)}
+
+  /* pricing */
+  .price{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:960px;margin:0 auto}
+  .pc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:32px;display:flex;flex-direction:column}
+  .pc.pop{background:var(--ink);color:#fff;border-color:var(--ink);transform:scale(1.03)}
+  .pc.pop .ink2{color:#b7b1a3}.pc.pop .pb{background:var(--lime);color:var(--ink)}
+  .pc .pl{font-weight:600;font-size:16px}
+  .pc .ink2{color:var(--ink-2);font-size:14px}
+  .pc .pv{font-family:var(--disp);font-size:46px;font-weight:700;margin:14px 0 2px}.pc .pv small{font-size:15px;font-weight:500;color:var(--ink-3)}
+  .pc ul{list-style:none;margin:22px 0;display:flex;flex-direction:column;gap:12px}
+  .pc li{font-size:14px;display:flex;gap:10px;align-items:center}
+  .pc li svg{width:18px;height:18px;color:var(--emerald);flex-shrink:0}
+  .pc.pop li svg{color:var(--lime)}
+  .pc .pb{margin-top:auto;text-align:center;font-weight:600;font-size:15px;padding:14px;border-radius:40px;cursor:pointer;background:var(--ink);color:#fff;border:0;font-family:var(--sans)}
+  .pc:not(.pop) .pb{background:var(--bg);color:var(--ink);border:1.5px solid var(--ink)}
+
+  /* faq */
+  .faq{max-width:760px;margin:0 auto}
+  .fitem{border-bottom:1px solid var(--line)}
+  .fq{width:100%;text-align:left;background:none;border:0;font-family:var(--disp);font-size:19px;font-weight:600;color:var(--ink);padding:22px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .fq .pm{font-size:24px;color:var(--emerald);transition:.2s;flex-shrink:0}
+  .fa{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--ink-2);font-size:15px;line-height:1.6}
+  .fitem.on .fa{max-height:160px;padding-bottom:22px}
+  .fitem.on .pm{transform:rotate(45deg)}
+
+  /* cta band */
+  .band{background:var(--ink);border-radius:36px;padding:70px 40px;text-align:center;position:relative;overflow:hidden}
+  .band::before,.band::after{content:'';position:absolute;border-radius:50%;background:var(--emerald);opacity:.3;filter:blur(20px)}
+  .band::before{width:240px;height:240px;left:-60px;top:-60px}
+  .band::after{width:200px;height:200px;right:-40px;bottom:-50px;background:var(--lime);opacity:.25}
+  .band h2{color:#fff;font-size:clamp(32px,4.6vw,54px);position:relative;z-index:2}
+  .band p{color:#b7b1a3;font-size:18px;margin:16px auto 30px;max-width:440px;position:relative;z-index:2}
+  .band .cta{position:relative;z-index:2;background:var(--lime);color:var(--ink)}
+  .band .cta:hover{background:#fff}
+
+  footer{padding:56px 0 34px;margin-top:30px;border-top:1px solid var(--line)}
+  .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px;margin-bottom:36px}
+  .fg p{font-size:14px;color:var(--ink-2);max-width:240px;margin-top:12px}
+  .fg h4{font-size:13px;font-weight:700;margin-bottom:14px}
+  .fg ul{list-style:none}.fg li{font-size:14px;color:var(--ink-2);margin-bottom:9px}
+  .fbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:1px solid var(--line);padding-top:22px;font-size:13px;color:var(--ink-3)}
+
+  @media(max-width:900px){
+    .nlinks{display:none}.hero{grid-template-columns:1fr;text-align:center}.hero p{margin-inline:auto}.hbtns,.stores{justify-content:center}
+    .pwrap{margin-top:20px}.bento{grid-template-columns:1fr 1fr;grid-auto-rows:auto}.bx{min-height:180px}.bx.col2,.bx.row2{grid-column:auto;grid-row:auto}
+    .steps,.quotes,.price{grid-template-columns:1fr}.step .ln{display:none}.pc.pop{transform:none}.fg{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:760px){.dshell-back .dshell-txt{display:none}.dshell-back{padding:9px!important}}
+</style>
+</head>
+<body>
+  <nav>
+    <div class="wrap nv">
+      <div class="nav-left" style="display:flex;align-items:center;gap:12px"><a href="/" class="dshell-back" title="Voltar ao Devan Shell Tech" aria-label="Voltar ao Devan Shell Tech" style="display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border-radius:30px;border:1px solid currentColor;color:inherit;text-decoration:none;opacity:.6;flex-shrink:0;font-size:12px;font-weight:600;letter-spacing:.02em;line-height:1;white-space:nowrap"><span style="font-size:15px">←</span><span class="dshell-txt">&nbsp;Voltar ao Devan Shell Tech</span></a><div class="logo"><span class="m"></span>Lumen</div></div>
+      <div class="nlinks"><a href="#recursos">Recursos</a><a href="#como">Como funciona</a><a href="#planos">Planos</a><a href="#faq">Dúvidas</a></div>
+      <div class="nbtn"><a class="ghost">Entrar</a><a class="pill-btn">Baixar app</a></div>
+    </div>
+  </nav>
+
+  <header class="wrap hero">
+    <div>
+      <div class="tagline"><b>Novo</b> Cofrinhos com rendimento de 110% do CDI</div>
+      <h1>Seu dinheiro,<br>no <span class="mark">piloto automático</span></h1>
+      <p>O Lumen junta suas contas, organiza cada gasto sozinho e faz seu dinheiro render — sem planilha, sem esforço.</p>
+      <div class="hbtns">
+        <button class="cta dark">Baixar grátis</button>
+        <button class="cta line">▷ Ver em 90s</button>
+      </div>
+      <div class="stores">
+        <div class="av"><i></i><i></i><i></i><i></i></div>
+        <span><b style="color:var(--ink)">+200 mil</b> pessoas · ★ 4.9 nas lojas</span>
+      </div>
+    </div>
+
+    <div class="pwrap">
+      <div class="blob"></div>
+      <div class="phone">
+        <div class="screen">
+          <div class="ptop">
+            <div class="hi">Oi, Marina 👋 <b>· tudo no azul</b></div>
+            <div class="bal">R$ 12.840,55</div>
+            <div class="row">
+              <button><b>↑</b>Enviar</button>
+              <button><b>↓</b>Cobrar</button>
+              <button><b>+</b>Guardar</button>
+            </div>
+          </div>
+          <div class="pbody">
+            <div class="pcard">
+              <div class="ct"><span>Gastos da semana</span><span style="color:var(--emerald)">−14%</span></div>
+              <div class="bars"><i style="height:40%"></i><i style="height:66%"></i><i style="height:52%"></i><i style="height:80%"></i><i style="height:48%"></i><i style="height:70%"></i><i style="height:34%"></i></div>
+            </div>
+            <div class="pcard" style="padding:8px 14px">
+              <div class="tx"><div class="ico">🛒</div><div class="t"><b>Mercado Pão</b><span>Alimentação · hoje</span></div><div class="v">− R$ 86</div></div>
+              <div class="tx"><div class="ico">💸</div><div class="t"><b>Salário</b><span>Receita · ontem</span></div><div class="v up">+ R$ 5.200</div></div>
+              <div class="tx"><div class="ico">🎧</div><div class="t"><b>Spotify</b><span>Assinatura · ontem</span></div><div class="v">− R$ 21</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap logos">
+    <span class="lbl">Integra com os bancos que você já usa</span>
+    <span>nubank</span><span>itaú</span><span>Inter</span><span>C6</span><span>Bradesco</span><span>PicPay</span>
+  </div>
+
+  <section class="sec wrap" id="recursos">
+    <div class="sh">
+      <span class="eye">RECURSOS</span>
+      <h2>Tudo que sua grana precisa, num app só</h2>
+      <p>Pare de pular entre 5 apps de banco. O Lumen mostra o todo — e cuida do chato por você.</p>
+    </div>
+    <div class="bento">
+      <div class="bx dark col2">
+        <div class="ic">🧠</div>
+        <h3>Categorização com IA</h3>
+        <p>Cada transação é lida e classificada sozinha. Você abre o app e já entende pra onde foi cada real.</p>
+        <div class="chips"><span>Alimentação</span><span>Transporte</span><span>Lazer</span><span>Contas</span></div>
+      </div>
+      <div class="bx emerald row2">
+        <div class="ic" style="background:rgba(255,255,255,.18)">📈</div>
+        <div class="big">110%</div>
+        <h3 style="margin-bottom:4px">do CDI nos cofrinhos</h3>
+        <p>Guarde pra um objetivo e veja render todo dia, com resgate na hora.</p>
+      </div>
+      <div class="bx light">
+        <div class="ic">🔔</div>
+        <h3>Alertas espertos</h3>
+        <p>Avisamos antes de estourar o orçamento ou pagar dobrado.</p>
+      </div>
+      <div class="bx lime">
+        <div class="ic" style="background:rgba(0,0,0,.08)">🎯</div>
+        <h3>Metas visuais</h3>
+        <p>Crie objetivos e separe valor automático todo mês.</p>
+      </div>
+      <div class="bx light col2">
+        <div class="ic">🔒</div>
+        <h3>Open Finance com segurança bancária</h3>
+        <p>Conecte todos os bancos via Open Finance, criptografado ponta a ponta. Você no controle de quem acessa o quê — revoga quando quiser.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="como">
+    <div class="sh ctr">
+      <span class="eye">COMO FUNCIONA</span>
+      <h2>Do caos ao controle em 3 passos</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="ln"></span><h3>Conecte os bancos</h3><p>Login seguro via Open Finance. Em segundos, todas as contas e cartões num lugar só.</p></div>
+      <div class="step"><span class="ln"></span><h3>Deixe a IA organizar</h3><p>O Lumen categoriza tudo, junta as faturas e te mostra o resumo do mês mastigado.</p></div>
+      <div class="step"><h3>Faça render</h3><p>Crie metas, ative os cofrinhos e acompanhe seu patrimônio crescer no automático.</p></div>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <div class="sh ctr">
+      <span class="eye">QUEM USA, AMA</span>
+      <h2>Mais de 200 mil dormem tranquilos</h2>
+    </div>
+    <div class="quotes">
+      <div class="q"><div class="stars">★★★★★</div><p>"Pela primeira vez na vida sei pra onde meu dinheiro vai. Os cofrinhos viraram meu vício saudável."</p><div class="who"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt=""><div><b>Marina Alves</b><span>Designer · SP</span></div></div></div>
+      <div class="q"><div class="stars">★★★★★</div><p>"Larguei 3 planilhas e o estresse junto. O alerta de fatura me salvou de pagar juros duas vezes."</p><div class="who"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt=""><div><b>Rafael Lima</b><span>Dev · BH</span></div></div></div>
+      <div class="q"><div class="stars">★★★★★</div><p>"O resumo mensal com IA é surreal. Parece que tenho um consultor financeiro no bolso por R$ 19."</p><div class="who"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" alt=""><div><b>Júlia Souza</b><span>Médica · RJ</span></div></div></div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="planos">
+    <div class="sh ctr">
+      <span class="eye">PLANOS</span>
+      <h2>Comece de graça. Sempre.</h2>
+      <p>Faça upgrade só quando quiser turbinar. Sem fidelidade, cancela com 1 toque.</p>
+    </div>
+    <div class="price">
+      <div class="pc">
+        <div class="pl">Free</div><div class="ink2">Pra começar a organizar</div>
+        <div class="pv">R$ 0<small>/mês</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>2 contas conectadas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Categorização automática</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>1 cofrinho</li>
+        </ul>
+        <button class="pb">Baixar grátis</button>
+      </div>
+      <div class="pc pop">
+        <div class="pl">Pro <span style="background:var(--lime);color:var(--ink);font-size:11px;padding:3px 8px;border-radius:20px;margin-left:6px">popular</span></div>
+        <div class="ink2">Pra fazer o dinheiro render</div>
+        <div class="pv">R$ 19<small>/mês</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Contas ilimitadas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Cofrinhos 110% CDI</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Relatório mensal com IA</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Alertas inteligentes</li>
+        </ul>
+        <button class="pb">Assinar o Pro</button>
+      </div>
+      <div class="pc">
+        <div class="pl">Família</div><div class="ink2">Pra organizar a casa toda</div>
+        <div class="pv">R$ 39<small>/mês</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Tudo do Pro</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Até 5 perfis</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5L20 7"/></svg>Mesada e controle dos filhos</li>
+        </ul>
+        <button class="pb">Escolher Família</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="faq">
+    <div class="sh ctr">
+      <span class="eye">DÚVIDAS</span>
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq" id="faqbox">
+      <div class="fitem"><button class="fq">É seguro conectar meus bancos? <span class="pm">+</span></button><div class="fa">Sim. Usamos Open Finance regulado pelo Banco Central, com criptografia ponta a ponta. O Lumen só lê os dados — nunca movimenta seu dinheiro sem você autorizar — e você revoga o acesso quando quiser.</div></div>
+      <div class="fitem"><button class="fq">O plano grátis tem prazo? <span class="pm">+</span></button><div class="fa">Não. O Free é grátis pra sempre, com 2 contas e categorização automática. Você só paga se quiser recursos do Pro, como cofrinhos e relatórios com IA.</div></div>
+      <div class="fitem"><button class="fq">Como funcionam os cofrinhos? <span class="pm">+</span></button><div class="fa">Você separa um valor pra um objetivo e ele rende 110% do CDI, com liquidez diária — resgata na hora, sem multa. Dá pra programar aportes automáticos todo mês.</div></div>
+      <div class="fitem"><button class="fq">Funciona em iPhone e Android? <span class="pm">+</span></button><div class="fa">Sim, nos dois, e seus dados sincronizam em tempo real entre os aparelhos. Também tem versão web pra ver tudo no computador.</div></div>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <div class="band">
+      <h2>Bora deixar a grana no automático?</h2>
+      <p>Leva 2 minutos pra começar. Sem cartão, sem letra miúda.</p>
+      <button class="cta">Baixar o Lumen grátis →</button>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <div class="fg">
+      <div><div class="logo"><span class="m"></span>Lumen</div><p>A conta-controle que faz seu dinheiro trabalhar sozinho.</p></div>
+      <div><h4>Produto</h4><ul><li>Recursos</li><li>Cofrinhos</li><li>Planos</li><li>Segurança</li></ul></div>
+      <div><h4>Empresa</h4><ul><li>Sobre</li><li>Carreiras</li><li>Imprensa</li><li>Blog</li></ul></div>
+      <div><h4>Ajuda</h4><ul><li>Central</li><li>Status</li><li>Contato</li><li>Termos</li></ul></div>
+    </div>
+    <div style="text-align:center;margin-bottom:16px"><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid currentColor;border-radius:30px;font:600 13px system-ui,-apple-system,sans-serif;letter-spacing:.04em;text-decoration:none;color:inherit;opacity:.7">↑ Voltar ao topo</a></div>
+    <div class="fbar"><span>Demo fictícia · Devan Shell Tech · devanshelltech.com.br</span><span>Feito no Brasil 🇧🇷</span></div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#faqbox .fq').forEach(b=>b.onclick=()=>{
+      const it=b.parentElement, open=it.classList.contains('on');
+      document.querySelectorAll('#faqbox .fitem').forEach(x=>x.classList.remove('on'));
+      if(!open) it.classList.add('on');
+    });
+    document.querySelector('#faqbox .fitem').classList.add('on');
+  </script>
+</body>
+</html>
